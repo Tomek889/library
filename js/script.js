@@ -50,6 +50,7 @@ function displayBooks(library) {
         changeStatusButton.classList.add('status-button');
         const changeStatusButtonText = document.createTextNode(`Change Status`);
         changeStatusButton.appendChild(changeStatusButtonText);
+        changeStatusButton.setAttribute('data-id', book.id);
         card.appendChild(changeStatusButton);
 
         const deleteButton = document.createElement('button');
@@ -82,8 +83,28 @@ function addDeleteEventListeners() {
             const bookId = button.getAttribute('data-id');
             removeBookFromLibrary(bookId);
             displayBooks(myLibrary);
-        })
-    })
+        });
+    });
+}
+
+function changeStatus(bookId) {
+    const bookIndex = myLibrary.findIndex(book => book.id === bookId);
+
+    if (bookIndex !== -1) {
+        myLibrary[bookIndex].read = !myLibrary[bookIndex].read;
+    }
+}
+
+function addChangeStatusEventListeners() {
+    const changeStatusButtons = document.querySelectorAll('.status-button');
+
+    changeStatusButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const bookId = button.getAttribute('data-id');
+            changeStatus(bookId);
+            displayBooks(myLibrary);
+        });
+    });
 }
 
 form.addEventListener('submit', (event) => {
