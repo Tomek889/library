@@ -1,3 +1,9 @@
+const dialog = document.querySelector('dialog');
+const addBookButton = document.querySelector('#add-new-book');
+const closeButton = document.querySelector('#close-button');
+const submitButton = document.querySelector('#submit-button');
+const form = document.querySelector('dialog form');
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -8,7 +14,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(title, author, pages, read=false) {
+function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
 }
 
@@ -44,18 +50,13 @@ function displayBooks(library) {
     }
 }
 
-const dialog = document.querySelector('dialog');
-const addBookButton = document.querySelector('#add-new-book');
-const closeButton = document.querySelector('#close-button');
-const submitButton = document.querySelector('#submit-button');
-const form = document.querySelector('dialog form');
-
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const title = document.querySelector('#add-title').value.trim();
     const author = document.querySelector('#add-author').value.trim();
     const pages = document.querySelector('#add-pages').value.trim();
-    addBookToLibrary(title, author, pages);
+    const read = document.querySelector('#is-read').checked;
+    addBookToLibrary(title, author, pages, read);
     form.reset();
     displayBooks(myLibrary);
     dialog.close();
@@ -66,5 +67,6 @@ addBookButton.addEventListener('click', () => {
 });
 
 closeButton.addEventListener('click', () => {
+    form.reset();
     dialog.close();
 });
