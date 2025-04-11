@@ -51,9 +51,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::backdrop {
-    opacity: 0.7;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+html {
+
+}
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 80%;
 }
 
 .header {
-    font-size: 4rem;
+    font-size: 3rem;
 }
