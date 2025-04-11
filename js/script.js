@@ -17,7 +17,6 @@ function displayBooks(library) {
     container.innerHTML = '';
 
     for (const book of library) {
-        console.log(book)
         const card = document.createElement('div');
         card.classList.add('card');
 
@@ -53,7 +52,13 @@ const form = document.querySelector('dialog form');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const title = document.querySelector('#').value.trim();
+    const title = document.querySelector('#add-title').value.trim();
+    const author = document.querySelector('#add-author').value.trim();
+    const pages = document.querySelector('#add-pages').value.trim();
+    addBookToLibrary(title, author, pages);
+    form.reset();
+    displayBooks(myLibrary);
+    dialog.close();
 });
 
 addBookButton.addEventListener('click', () => {
