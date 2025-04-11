@@ -8,14 +8,14 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(title, author, pages, read=false) {
     myLibrary.push(new Book(title, author, pages, read));
 }
 
 function displayBooks(library) {
     const container = document.querySelector('.cards');
     container.innerHTML = '';
-    
+
     for (const book of library) {
         console.log(book)
         const card = document.createElement('div');
@@ -45,8 +45,21 @@ function displayBooks(library) {
     }
 }
 
-// testing
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 245, false);
-addBookToLibrary("Phil Knight", "Shoe Dog", 395, true);
-addBookToLibrary("Harry Potter", "J.K. Rowling", 45, true);
-displayBooks(myLibrary);
+const dialog = document.querySelector('dialog');
+const addBookButton = document.querySelector('#add-new-book');
+const closeButton = document.querySelector('#close-button');
+const submitButton = document.querySelector('#submit-button');
+const form = document.querySelector('dialog form');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const title = document.querySelector('#').value.trim();
+});
+
+addBookButton.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+closeButton.addEventListener('click', () => {
+    dialog.close();
+});

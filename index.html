@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <dialog>
+        <p>New Book</p>
+        <form>
+            <label for="add-title">Title</label>
+            <input type="text" name="title" id="add-title">
+            <label for="add-author">Author</label>
+            <input type="text" name="author" id="add-author">
+            <label for="add-pages">Pages</label>
+            <input type="number" name="pages" id="add-pages">
+            <button type="button" id="close-button">Close</button>
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
+    <p class="header">Your Library</p>
+    <button type="button" id="add-new-book">New Book</button>
     <div class="cards">
-        
+
     </div>
     <script src="./js/script.js"></script>
 </body>
