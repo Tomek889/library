@@ -61,6 +61,29 @@ function displayBooks(library) {
 
         container.appendChild(card);
     }
+
+    addDeleteEventListeners();
+    addChangeStatusEventListeners();
+}
+
+function removeBookFromLibrary(bookId) {
+    const bookIndex = myLibrary.findIndex(book => book.id === bookId);
+
+    if (bookIndex !== -1) {
+        myLibrary.splice(bookIndex, 1);
+    }
+}
+
+function addDeleteEventListeners() {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const bookId = button.getAttribute('data-id');
+            removeBookFromLibrary(bookId);
+            displayBooks(myLibrary);
+        })
+    })
 }
 
 form.addEventListener('submit', (event) => {
@@ -83,3 +106,4 @@ closeButton.addEventListener('click', () => {
     form.reset();
     dialog.close();
 });
+
