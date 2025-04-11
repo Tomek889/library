@@ -54,10 +54,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-html {
-
-}
-
 dialog {
     position: fixed;
     top: 50%;
@@ -69,6 +65,7 @@ dialog {
     width: calc(28vw);
     max-width: 90%;
     max-height: 80%;
+    min-width: 300px;
 }
 
 dialog p {
@@ -99,4 +96,39 @@ dialog form input[type="checkbox"] {
 
 .header {
     font-size: 3rem;
+}
+
+#add-new-book {
+    font-size: 1.5rem;
+    padding: 10px 30px;
+}
+
+.head {
+    text-align: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 30px 50px;
+}
+
+.card {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px 30px;
+}
+
+.card > * {
+    margin-bottom: 8px;
+}
+
+.status-button {
+    margin-right: 5px;
+}
+
+.delete-button {
+    margin-left: 5px;
 }
