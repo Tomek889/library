@@ -1,0 +1,2 @@
+# Library
+This project is a basic library management system that allows you to manage a collection of books. You can add books, delete them, and toggle their read status. The data is stored in an array, and the interface is dynamically updated using JavaScript. The project is part of The Odin Project curriculum.
