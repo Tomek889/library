@@ -46,6 +46,19 @@ function displayBooks(library) {
         read.appendChild(readText);
         card.appendChild(read);
 
+        const changeStatusButton = document.createElement('button');
+        changeStatusButton.classList.add('status-button');
+        const changeStatusButtonText = document.createTextNode(`Change Status`);
+        changeStatusButton.appendChild(changeStatusButtonText);
+        card.appendChild(changeStatusButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        const deleteButtonText = document.createTextNode(`Delete`);
+        deleteButton.appendChild(deleteButtonText);
+        deleteButton.setAttribute('data-id', book.id);
+        card.appendChild(deleteButton);
+
         container.appendChild(card);
     }
 }
