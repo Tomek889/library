@@ -3,6 +3,7 @@ const addBookButton = document.querySelector('#add-new-book');
 const closeButton = document.querySelector('#close-button');
 const submitButton = document.querySelector('#submit-button');
 const form = document.querySelector('dialog form');
+const errorMsg = document.querySelector('#error');
 
 class Book {
     constructor(title, author, pages, read) {
@@ -121,13 +122,24 @@ form.addEventListener('submit', (event) => {
     const author = document.querySelector('#add-author').value.trim();
     const pages = document.querySelector('#add-pages').value.trim();
     const read = document.querySelector('#is-read').checked;
-    library.addBookToLibrary(title, author, pages, read);
-    form.reset();
-    library.displayBooks();
-    dialog.close();
+    if (!title.length) {
+        errorMsg.textContent = 'You need to input title of the book.';
+    } else if (!author.length) {
+        errorMsg.textContent = 'You need to input author of the book.';
+    } else if (!pages.length) {
+        errorMsg.textContent = 'You need to input number of pages the book contains.';
+    } else if (pages <= 0) {
+        errorMsg.textContent = 'You need to input a positive number of pages';
+    } else {
+        library.addBookToLibrary(title, author, pages, read);
+        form.reset();
+        library.displayBooks();
+        dialog.close();
+    }
 });
 
 addBookButton.addEventListener('click', () => {
+    errorMsg.textContent = '';
     dialog.showModal();
 });
 
